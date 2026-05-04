@@ -2,13 +2,14 @@ from sqlalchemy import BigInteger, ForeignKey, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import Base
+from app.db.types import BigIntPK
 from app.shared.mixins import OwnedByMember, SoftDeleteMixin, TimestampedMixin
 
 
 class ExercisePlan(Base, TimestampedMixin, OwnedByMember):
     __tablename__ = "exercise_plan"
 
-    exercise_plan_id: Mapped[int] = mapped_column(BigInteger, primary_key=True, autoincrement=True)
+    exercise_plan_id: Mapped[int] = mapped_column(BigIntPK, primary_key=True, autoincrement=True)
     exercise_name: Mapped[str] = mapped_column(String(128), nullable=False)
 
 
@@ -19,7 +20,7 @@ class ExerciseSet(Base, TimestampedMixin):
 
     __tablename__ = "exercise_set"
 
-    exercise_set_id: Mapped[int] = mapped_column(BigInteger, primary_key=True, autoincrement=True)
+    exercise_set_id: Mapped[int] = mapped_column(BigIntPK, primary_key=True, autoincrement=True)
     kg: Mapped[int] = mapped_column(Integer, nullable=False)
     times: Mapped[int] = mapped_column(Integer, nullable=False)
     exercise_id: Mapped[int] = mapped_column(
@@ -36,7 +37,7 @@ class ExerciseCategory(Base, TimestampedMixin, SoftDeleteMixin):
     __tablename__ = "exercise_category"
 
     exercise_category_id: Mapped[int] = mapped_column(
-        BigInteger, primary_key=True, autoincrement=True
+        BigIntPK, primary_key=True, autoincrement=True
     )
     category: Mapped[str] = mapped_column(String(32), nullable=False)
 
@@ -47,7 +48,7 @@ class ExerciseDetailCategory(Base, TimestampedMixin, SoftDeleteMixin):
     __tablename__ = "exercise_detail_category"
 
     exercise_detail_category_id: Mapped[int] = mapped_column(
-        BigInteger, primary_key=True, autoincrement=True
+        BigIntPK, primary_key=True, autoincrement=True
     )
     category: Mapped[str] = mapped_column(String(64), nullable=False)
     exercise_category_id: Mapped[int] = mapped_column(
@@ -62,7 +63,7 @@ class ExerciseExerciseCategory(Base, TimestampedMixin):
     __tablename__ = "exercise_exercise_category"
 
     exercise_exercise_category_id: Mapped[int] = mapped_column(
-        BigInteger, primary_key=True, autoincrement=True
+        BigIntPK, primary_key=True, autoincrement=True
     )
     exercise_plan_id: Mapped[int] = mapped_column(
         BigInteger,
