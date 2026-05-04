@@ -88,6 +88,5 @@ data/
 *.key
 secrets/
 
-# Claude Code — 로컬 전용, 추적하지 않음
+# Claude Code — 로컬 전용 (커밋하지 않음)
 .claude/
-CLAUDE.md
