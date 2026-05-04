@@ -5,6 +5,7 @@ from fastapi import FastAPI
 
 from app.core.config import settings
 from app.db import Base, engine
+from app.shared.handlers import register_exception_handlers
 
 
 @asynccontextmanager
@@ -23,6 +24,7 @@ def create_app() -> FastAPI:
         debug=settings.debug,
         lifespan=lifespan,
     )
+    register_exception_handlers(app)
 
     @app.get("/health", tags=["meta"])
     def health() -> dict[str, str]:
