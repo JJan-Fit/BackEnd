@@ -1,0 +1,26 @@
+name: 📋 작업 (Task)
+description: 내부 작업/리팩토링/잡일 트래킹용.
+title: "[Task] "
+labels: ["task"]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: 목표
+      description: 무엇을 하려는가? (리팩토링, 의존성 업데이트, 문서 정리 등)
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: 범위 / 체크리스트
+      placeholder: |
+        - [ ] X 모듈 분리
+        - [ ] 테스트 추가
+        - [ ] CHANGELOG 갱신
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 메모
