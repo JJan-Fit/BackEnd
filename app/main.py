@@ -3,6 +3,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
+from app.auth.router import router as auth_router
 from app.core.config import settings
 from app.db import Base, engine
 from app.shared.handlers import register_exception_handlers
@@ -25,6 +26,7 @@ def create_app() -> FastAPI:
         lifespan=lifespan,
     )
     register_exception_handlers(app)
+    app.include_router(auth_router)
 
     @app.get("/health", tags=["meta"])
     def health() -> dict[str, str]:

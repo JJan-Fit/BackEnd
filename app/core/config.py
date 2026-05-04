@@ -34,5 +34,9 @@ class Settings(BaseSettings):
     database_echo: bool = False
     database_auto_create: bool = False
 
+    jwt_secret: str = "change-me-in-real-env-or-fail-startup"
+    jwt_algorithm: str = "HS256"
+    jwt_expire_minutes: int = 60
+
 
 settings = Settings()
