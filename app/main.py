@@ -7,6 +7,7 @@ from app.auth.router import router as auth_router
 from app.core.config import settings
 from app.db import Base, engine
 from app.shared.handlers import register_exception_handlers
+from app.weights.router import router as weights_router
 
 
 @asynccontextmanager
@@ -27,6 +28,7 @@ def create_app() -> FastAPI:
     )
     register_exception_handlers(app)
     app.include_router(auth_router)
+    app.include_router(weights_router)
 
     @app.get("/health", tags=["meta"])
     def health() -> dict[str, str]:
